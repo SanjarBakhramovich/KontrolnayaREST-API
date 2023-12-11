@@ -12,11 +12,11 @@ func main() {
 	memStore := store.NewMemStore()
 	handler := handlers.NewHandler(memStore)
 
-	r.GET("/books", handler.GetAllBooks)
-	r.GET("/books/:id", handler.GetBook)
 	r.POST("/books", handler.AddBook)
+	r.GET("/books/:id", handler.GetBook)
 	r.PUT("/books/:id", handler.UpdateBook)
 	r.DELETE("/books/:id", handler.DeleteBook)
+	r.GET("/books", handler.GetAllBooks)
 
 	r.Run() // По умолчанию на порту :8080
 }

@@ -97,5 +97,3 @@ func (m *MemStore) GetAllBooks() ([]*models.Book, error) {
 
 	return books, nil
 }
-
-// Реализуйте остальные методы: GetBook, UpdateBook, DeleteBook, GetAllBooks

@@ -53,14 +53,14 @@ func (h *Handler) GetBook(c *gin.Context) {
 func extractAuthors(authorsData interface{}) string {
 	authorsSlice, ok := authorsData.([]interface{})
 	if !ok {
-		return "" // или обработайте ошибку по-другому
+		return ""
 	}
 
 	var authors []string
 	for _, author := range authorsSlice {
 		authorMap, ok := author.(map[string]interface{})
 		if !ok {
-			continue // или обработайте ошибку по-другому
+			continue
 		}
 		if name, ok := authorMap["name"].(string); ok {
 			authors = append(authors, name)
@@ -95,7 +95,6 @@ func (h *Handler) fetchBookInfoFromOpenLibrary(isbn string) (*models.Book, error
 		Title: bookData["title"].(string),
 		// Пример для автора, предполагая, что авторы возвращаются в виде массива
 		Author: extractAuthors(bookData["authors"]),
-		// Аналогично для других полей...
 	}
 
 	return &book, nil
